@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>window.TONE_SILENCE_VERSION_LOGGING = true</script>
+
+    <script src="https://tonejs.github.io/build/Tone.js"></script>
+    <script src="https://rawgit.com/nexus-js/ui/master/dist/NexusUI.js"></script>
+
+    <title>P2_StepSequencer</title>
+
+</head>
+<body class="m-5">
+
+    <div id="sequencer"></div>
+    <div id="meter"></div>
+
+    <script>
+
+        Nexus.context = Tone.context
+
+        // Challenge 0
+        // Criar um step sequencer.
+        // Descarregar sons do freesound: kick, clap, hihat, snare, ou outros...
+        // - Incluir biblioteca NexusUI.js
+        // - Incluir biblioteca Tone.js
+
+        var seq = new Nexus.Sequencer('#sequencer', {
+            rows: 4
+        })
+        seq.start(1000)
+
+        var sons = new Tone.Players([
+            "sounds/clap.wav",
+            "sounds/hihat.wav",
+            "sounds/kick.wav",
+            "sounds/snare.wav"
+        ]).toMaster()
+
+        seq.on('step', sequenciaAvancou)
+
+        function sequenciaAvancou(info) {
+            if (info[0] === 1) sons.get(0).start()
+            if (info[1] === 1) sons.get(1).start()
+            if (info[2] === 1) sons.get(2).start()
+            if (info[3] === 1) sons.get(3).start()
+        }
+
+        var meter = new Nexus.Meter('#meter')
+        meter.connect(Tone.Master)
+
+        meter.colorize('accent', 'lightgreen')
+        meter.colorize('fill', 'lightblue')
+
+        // Challenge 1
+        // Adicionar um slider ou number da biblioteca NexusUI para mudar BPMs
+
+        // Challenge 2
+        // Adicionar um meter para verificar que não estamos com clipping
+
+        // Challenge 3
+        // Mudar as cores com .colorize
+
+        // Challenge 4
+        // Definir banco de padrõe (queen, rock, house...) através de um select
+
+        // Challenge 5 (extra)
+        // Usando sempre elements da biblioteca NexusUI:
+        // - definir mute/solo por track
+        // - definir volume individual por track
+
+    </script>
+
+</body>
+</html>

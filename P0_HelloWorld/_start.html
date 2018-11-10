@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="m-5">
+
+    <audio controls>
+        <source src="audio.wav">
+    </audio>
+
+    <h1>P0 - Hello World</h1>
+    <em>Ver comentários em código para challenges.</p>
+
+    <script>
+
+        // Challenge 0a
+        // Descarregar um som do freesound.org e tocá-lo com o uso da tag <audio>
+
+        // Challenge 0b
+        // Criar um oscilador com a frequência do lá central (440Hz).
+        // Veriicar grafo nas DevTools.
+        var ctx = new AudioContext()
+
+        var fdo = 130.81 * 2
+        var fmi = 164.81 * 2
+        var fsol = 196.00 * 2
+
+        var osc1 = ctx.createOscillator()
+        osc1.frequency.value = fdo
+        osc1.type = 'square'
+        osc1.connect(ctx.destination)
+        osc1.start(0)
+
+        var osc2 = ctx.createOscillator()
+        osc2.frequency.value = fmi
+        osc2.type = 'square'
+        osc2.connect(ctx.destination)
+        osc2.start(1)
+
+        var osc3 = ctx.createOscillator()
+        osc3.frequency.value = fsol
+        osc3.type = 'square'
+        osc3.connect(ctx.destination)
+        osc3.start(2)
+
+        osc1.stop(1)
+        osc2.stop(2)
+        osc3.stop(3)
+
+        // Challenge 1
+        // Agora que sabes criar um oscilador com a WAA, tenta criar vários para
+        // formar um acorde. Link com frequência das notas:
+        // http://pages.mtu.edu/~suits/notefreqs.html.
+
+        // Challenge 2
+        // Em vez de tocar as notas todas ao mesmo tempo, tenta tocá-las em
+        // arpejo, ou seja, uma a seguir a outra, da mais grave à mais agura.
+
+        // Challenge 3
+        // Mesmo sem consultar a referência, consegues inspecionar o objecto de
+        // javascript do oscilador criado e modificar alguma das suas
+        // propriedades? Ou, por exemplo, mostrar uma mensagem (alert()) quando
+        // o som terminar?
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>P1_Theremin</title>
+
+    <script src="ball.js"></script>
+
+    <style>
+        body {
+            padding:0;
+            margin:0;
+            background-color: whitesmoke;
+        }
+
+        .ball {
+            -webkit-transition: all;
+            transition: all;
+            position:absolute;
+            border-radius: 50%;
+            background: slategray;
+        }
+        #oscType {
+            z-index: 100000;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+
+        // Challenge 0a
+        // Criar um theremin.
+        // Y controla amplitude (gainNode)
+
+        var waa = new AudioContext()
+        var osc = waa.createOscillator()
+        var amp = waa.createGain()
+        var panner = waa.createStereoPanner()
+
+        osc.connect(amp)
+        amp.connect(panner)
+        panner.connect(waa.destination)
+        osc.start()
+
+        // waa.suspend()
+
+        // Challenge 0b
+        // Ao mudar a ampltude rapidamente, vai-se notar clicks. Como evitar isto?
+
+        // Challenge 1
+        // Fazer com que o X controle o pitch
+
+        // Challenge 2 Mudar o tipo de onda (sine, square, sawtooth, triangle)
+        // com as teclas 1, 2, 3 e 4 respectivamente.
+        // Evento a "ouvir" é `onkeypres`
+
+        // Challenge 3
+        // E se em vez de o X mapear à intensidade do som, funcionar como panorâmica?
+
+        // Challenge 4
+        // Usar a biblioteca shake.js para mudar o tipo de onda
+
+        // Challenge 5
+        // Porque não mudar o tamanho da bola em função da
+        // frequência: quanto mais aguda mais pequena e quanto mais grave maior.
+
+        // Challenge extra
+        // E porque não, mais que uma bola/sintetizador?
+
+    </script>
+
+</body>
+</html>
